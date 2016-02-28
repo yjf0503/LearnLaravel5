@@ -30,11 +30,11 @@
       <sourceFolder url="file://$MODULE_DIR$/vendor/symfony/process" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/symfony/debug" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/symfony/routing" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/vendor/monolog/monolog/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/monolog/monolog/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/vendor/monolog/monolog/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/laravel/framework/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser/lib" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
