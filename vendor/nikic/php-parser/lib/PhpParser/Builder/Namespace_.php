@@ -6,7 +6,7 @@ use PhpParser;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 
-class Namespace_ extends PhpParser\BuilderAbstract
+class Namespace_ extends Declaration
 {
     private $name;
     private $stmts = array();
@@ -14,10 +14,10 @@ class Namespace_ extends PhpParser\BuilderAbstract
     /**
      * Creates a namespace builder.
      *
-     * @param Node\Name|string $name Name of the namespace
+     * @param Node\Name|string|null $name Name of the namespace
      */
     public function __construct($name) {
-        $this->name = $this->normalizeName($name);
+        $this->name = null !== $name ? $this->normalizeName($name) : null;
     }
 
     /**
@@ -34,26 +34,11 @@ class Namespace_ extends PhpParser\BuilderAbstract
     }
 
     /**
-     * Adds multiple statements.
-     *
-     * @param array $stmts The statements to add
-     *
-     * @return $this The builder instance (for fluid interface)
-     */
-    public function addStmts(array $stmts) {
-        foreach ($stmts as $stmt) {
-            $this->addStmt($stmt);
-        }
-
-        return $this;
-    }
-
-    /**
      * Returns the built node.
      *
      * @return Node The built node
      */
     public function getNode() {
-        return new Stmt\Namespace_($this->name, $this->stmts);
+        return new Stmt\Namespace_($this->name, $this->stmts, $this->attributes);
     }
 }

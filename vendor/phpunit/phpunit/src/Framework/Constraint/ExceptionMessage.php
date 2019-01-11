@@ -8,21 +8,10 @@
  * file that was distributed with this source code.
  */
 
-/**
- *
- *
- * @package    PHPUnit
- * @subpackage Framework_Constraint
- * @author     Sebastian Bergmann <sebastian@phpunit.de>
- * @copyright  Sebastian Bergmann <sebastian@phpunit.de>
- * @license    http://www.opensource.org/licenses/BSD-3-Clause  The BSD 3-Clause License
- * @link       http://www.phpunit.de/
- * @since      Class available since Release 3.6.6
- */
 class PHPUnit_Framework_Constraint_ExceptionMessage extends PHPUnit_Framework_Constraint
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $expectedMessage;
 
@@ -39,11 +28,16 @@ class PHPUnit_Framework_Constraint_ExceptionMessage extends PHPUnit_Framework_Co
      * Evaluates the constraint for parameter $other. Returns true if the
      * constraint is met, false otherwise.
      *
-     * @param  Exception $other
-     * @return boolean
+     * @param Exception $other
+     *
+     * @return bool
      */
     protected function matches($other)
     {
+        if ($this->expectedMessage === '') {
+            return $other->getMessage() === '';
+        }
+
         return strpos($other->getMessage(), $this->expectedMessage) !== false;
     }
 
@@ -53,11 +47,19 @@ class PHPUnit_Framework_Constraint_ExceptionMessage extends PHPUnit_Framework_Co
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
-     * @param  mixed  $other Evaluated value or object.
+     * @param mixed $other Evaluated value or object.
+     *
      * @return string
      */
     protected function failureDescription($other)
     {
+        if ($this->expectedMessage === '') {
+            return sprintf(
+                "exception message is empty but is '%s'",
+                $other->getMessage()
+            );
+        }
+
         return sprintf(
             "exception message '%s' contains '%s'",
             $other->getMessage(),
@@ -70,6 +72,10 @@ class PHPUnit_Framework_Constraint_ExceptionMessage extends PHPUnit_Framework_Co
      */
     public function toString()
     {
+        if ($this->expectedMessage === '') {
+            return 'exception message is empty';
+        }
+
         return 'exception message contains ';
     }
 }
