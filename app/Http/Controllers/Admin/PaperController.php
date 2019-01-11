@@ -40,7 +40,7 @@ class PaperController extends Controller
 	}
 
 	public function edit($id){
-		return view('admin/paper/edit')->withPapers(Paper::find($id));
+		return view('admin/paper/edit')->withPaper(Paper::find($id));
 	}
 
 	public function update($id,Request $request){

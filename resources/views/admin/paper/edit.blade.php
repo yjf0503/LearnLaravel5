@@ -15,12 +15,12 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('admin/papers/'.$papers->id ) }}" method="POST">
+                    <form action="{{ url('admin/papers/'.$paper->id ) }}" method="POST">
                         {{ method_field('PUT') }}
                         {!! csrf_field() !!}
-                        <input type="text" name="title" class="form-control" required="required" value="{{ $papers->title }}">
+                        <input type="text" name="title" class="form-control" required="required" value="{{ $paper->title }}">
                         <br>
-                        <textarea name="body" rows="10" class="form-control" required="required">{{ $papers->body }}</textarea>
+                        <textarea name="body" rows="10" class="form-control" required="required">{{ $paper->body }}</textarea>
                         <br>
                         <button class="btn btn-lg btn-info">编辑文章</button>
                     </form>
